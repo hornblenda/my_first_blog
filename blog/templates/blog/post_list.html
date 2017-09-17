@@ -1,31 +1,14 @@
-{% extends 'blog/base.html' %}
-{% load staticfiles %}
-<!DOCTYPE html>
- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2" />
-    <meta name="Description" content="Tu wpisz opis zawartości strony" />
-    <meta name="Keywords" content="magma, granit, bazalt" />
-    <title>Klub Miłośników skał magmowych</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-</head>
-<html>
-    
-    <body>
-        <h1> lubie pączki </h1>
-    {% block content %}
-        {% for post in posts %}
-        <div class="post">
-            <div class="date">
-                {{ post.published_date }}
-            </div>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-    {% endfor %}
-{% endblock content %}
-    </body>
-</html>
+
+           {% extends 'blog/base.html' %}
+           {% block content %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        {{ post.published_date }}
+                    </div>
+                   <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+            {% endblock content %}
+
