@@ -1,4 +1,4 @@
-{% load staticfiles %}
+ {% load staticfiles %}
 <!DOCTYPE html>
  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
@@ -15,20 +15,31 @@
     
     <body>
   <body>
-    <div class="page-header">
+   
+   <div class="page-header">
+         
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+        {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
          <h1><a href="/">Klub Miłośników Granitu</a></h1>
-    </div>
+
+  </div>
+
+
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
             {% block content %}
-            {% endblock %}
+    {% endblock %}
             </div>
         </div>
     </div>
+    <div>
+       
+    </div>
 </body>
     </body>
-</html>
+</html> 
